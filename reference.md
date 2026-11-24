@@ -15,3 +15,11 @@
 ### Data Orchestration
 
 - [What is Data Orchestration](https://www.montecarlodata.com/blog-what-is-data-orchestration/)
+
+
+
+<img width="1108" height="598" alt="image" src="https://github.com/user-attachments/assets/514c0c0c-5eb1-491d-9892-3a81b7c892f0" />
+
+<img width="1137" height="607" alt="image" src="https://github.com/user-attachments/assets/ae5d3710-c77f-4214-bc08-d90427aad20e" />
+
+
