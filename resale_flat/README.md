@@ -13,3 +13,25 @@ Try running the following commands:
 - Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
 - Find [dbt events](https://events.getdbt.com) near you
 - Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+
+<br>
+
+### 📌📌 Example Folder
+*   remove 2 default view: `my_first_dbt_model` and `my_second_dbt_model`
+*   remove `my_first_dbt_model` and `my_second_dbt_model` default content in schema.yml file
+
+<br>
+
+### 🧭 Datasets and New Tables
+
+
+`floor_area_sqm` and `resale_price` are stored as `STRING` in `public_resale_flat_prices_from_jan_2017` created by Meltano
+
+<br>
+
+
+<br>
+
+
+<br>
