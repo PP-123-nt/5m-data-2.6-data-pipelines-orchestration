@@ -92,6 +92,30 @@ meltano select tap-github --list
 
 <br>
 
+## **When is the pipeline updated? (In which step?)**
+To answer this, we need to separate the configuration of the pipeline from the execution of the pipeline.
+
+1. The Configuration (Definition) Update:
+The pipeline was "updated" (defined) in your `meltano.yml` file during these earlier steps:
+*   When you ran `meltano add tap-github` (added the extractor).
+*   When you ran `meltano add target-jsonl` (added the loader).
+*   When you ran `meltano select ...` (told it exactly which columns to grab).
+
+2. The Execution (Running) Update:
+*   The pipeline actually ran and moved data during this specific step (shown in Image 2 and 4):
+```
+meltano run tap-github target-jsonl
+```
+*   When you hit Enter on this command, Meltano read your meltano.yml file, fired up the GitHub extractor, pulled the data, and passed it to the JSONL loader to write to the file.
+
+3. The Hidden Update (Incremental State in terminal):
+*`Incremental state has been updated at 2026-11-25 08:04:11.114043+00:00.`*
+
+*   This is a crucial part of "updating the pipeline." Because you selected `published_at`, Meltano tracks the timestamp of the most recent release it just downloaded. It saves this state internally. Next time you run this pipeline, it will say, *"I already have data up to this date, I'll only ask GitHub for newer releases."*
+
+
+<br>
+
 # 📌 Adding a Loader
 
 

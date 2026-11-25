@@ -17,3 +17,7 @@ plugins:
     - releases.tag_name
     - releases.body
     - releases.published_at
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
