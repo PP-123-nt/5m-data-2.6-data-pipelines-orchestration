@@ -97,17 +97,21 @@ meltano select tap-github --list
 # 📌 Adding a Loader
 
 
+*   **`meltano.yml` file updated with the followings after json and bigquery command:**
 ```
   loaders:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
 ```
 
 
 <br>
 
-## **When is the pipeline updated? (In which step?)**
+## 🔍 **When is the pipeline updated? (In which step?)**
 To answer this, we need to separate the configuration of the pipeline from the execution of the pipeline.
 
 **1. The Configuration (Definition) Update:**
