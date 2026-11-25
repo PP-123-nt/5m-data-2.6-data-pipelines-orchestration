@@ -1,0 +1,33 @@
+default_environment: dev
+project_id: 01a212a8-580d-7a03-bbee-43045d88868f
+environments:
+- name: dev
+- name: staging
+- name: prod
+python: python3.11
+plugins:
+  extractors:
+  - name: tap-postgres
+    variant: meltanolabs
+    pip_url: meltanolabs-tap-postgres
+    config:
+      database: postgres
+      filter_schemas:
+      - public
+      host: aws-1-ap-northeast-2.pooler.supabase.com
+      port: 5432
+      user: postgres.dpcjstxyoquvsgjayzcp
+    select:
+    - public-resale_flat_prices_from_jan_2017.*
+  loaders:
+  - name: target-bigquery
+    variant: z3z1ma
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git setuptools<80
+    config:
+      batch_size: 104857600
+      dataset: resale
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      method: batch_job
+      project: regal-river-514207-e5
