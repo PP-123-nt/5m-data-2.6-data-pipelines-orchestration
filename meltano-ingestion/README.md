@@ -98,14 +98,26 @@ meltano select tap-github --list
 
 *   **`meltano.yml` file updated with the followings after json and bigquery command:**
 ```
+...
   loaders:
   - name: target-jsonl
     variant: andyh1203
     pip_url: target-jsonl
   - name: target-bigquery
     variant: z3z1ma
-    pip_url: git+https://github.com/z3z1ma/target-bigquery.git
+    pip_url: git+https://github.com/z3z1ma/target-bigquery.git setuptools<80
+    config:
+      dataset: ingestion
+      denormalized: true
+      flattening_enabled: true
+      flattening_max_depth: 1
+      method: batch_job
+      project: regal-river-514207-e5
 ```
+
+<img width="316" height="213" alt="image" src="https://github.com/user-attachments/assets/0938c8ea-18cf-4566-ae34-c261f50b38b1" />
+
+<img width="392" height="445" alt="image" src="https://github.com/user-attachments/assets/93dce94d-808d-4a4e-ab97-0b0e62b76245" />
 
 
 <br>
