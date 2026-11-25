@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: resale_flat
+  - name: resale_flat                # <--- variable name (not necessary to be the same as schema)
     database: regal-river-514207-e5
     schema: resale                   # <--- ADD THIS LINE
     tables:
