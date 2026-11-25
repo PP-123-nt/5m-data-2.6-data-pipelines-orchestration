@@ -90,7 +90,6 @@ meltano select tap-github --list
     - releases.published_at
 ```
 
-
 <br>
 
 
@@ -135,7 +134,7 @@ meltano run tap-github target-jsonl
 
 <br>
 
-## 🕵️🕵️ **Here is the timeline of how your `meltano.yml` evolved:
+## 🕵️🕵️ **Here is the timeline of how your `meltano.yml` evolved:**
 *   `meltano init`: Created the file with empty `extractors:` and `loaders:` lists.
 *   `meltano add tap-github`: Added the extractor details under the `extractors:` section.
 ```
