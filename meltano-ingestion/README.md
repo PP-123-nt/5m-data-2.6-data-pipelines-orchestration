@@ -90,38 +90,77 @@ meltano select tap-github --list
     - releases.published_at
 ```
 
+
+<br>
+
+
+# 📌 Adding a Loader
+
+
+```
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
+```
+
+
 <br>
 
 ## **When is the pipeline updated? (In which step?)**
 To answer this, we need to separate the configuration of the pipeline from the execution of the pipeline.
 
-1. The Configuration (Definition) Update:
+**1. The Configuration (Definition) Update:**
 The pipeline was "updated" (defined) in your `meltano.yml` file during these earlier steps:
 *   When you ran `meltano add tap-github` (added the extractor).
 *   When you ran `meltano add target-jsonl` (added the loader).
 *   When you ran `meltano select ...` (told it exactly which columns to grab).
 
-2. The Execution (Running) Update:
-*   The pipeline actually ran and moved data during this specific step (shown in Image 2 and 4):
+**2. The Execution (Running) Update:**
+*   The pipeline actually ran and moved data during this specific step:
 ```
 meltano run tap-github target-jsonl
 ```
-*   When you hit Enter on this command, Meltano read your meltano.yml file, fired up the GitHub extractor, pulled the data, and passed it to the JSONL loader to write to the file.
+*   When you hit Enter on this command, Meltano read your `meltano.yml` file, fired up the GitHub extractor, pulled the data, and passed it to the JSONL loader to write to the file.
 
-3. The Hidden Update (Incremental State in terminal):
+**3. The Hidden Update (Incremental State in terminal):**
 *`Incremental state has been updated at 2026-11-25 08:04:11.114043+00:00.`*
 
-*   This is a crucial part of "updating the pipeline." Because you selected `published_at`, Meltano tracks the timestamp of the most recent release it just downloaded. It saves this state internally. Next time you run this pipeline, it will say, *"I already have data up to this date, I'll only ask GitHub for newer releases."*
-
+*   This is a crucial part of "updating the pipeline." Because you selected `published_at`, Meltano tracks the timestamp of the most recent release it just downloaded. It saves this state internally.
+*   Next time you run this pipeline, it will say, *"I already have data up to this date, I'll only ask GitHub for newer releases."*
 
 <br>
 
-# 📌 Adding a Loader
+## 🕵️🕵️ **Here is the timeline of how your `meltano.yml` evolved:
+*   `meltano init`: Created the file with empty `extractors:` and `loaders:` lists.
+*   `meltano add tap-github`: Added the extractor details under the `extractors:` section.
+```
+...
+  extractors:
+  - name: tap-github
+    variant: meltanolabs
+    pip_url: meltanolabs-tap-github
+```
+*   `meltano add target-jsonl`: It told Meltano to install the JSONL loader and officially register it in your project under the `loaders:` section.
+```
+...
+  loaders:
+  - name: target-jsonl
+    variant: andyh1203
+    pip_url: target-jsonl
+```
+*   `meltano select ...`: Added the `select:` lines under the extractor to filter the columns.
+```
+...
+    select:
+    - releases.tag_name
+    - releases.body
+    - releases.published_at
+```
 
-
-
-
-
-*   Running the pipeline (e.g., `meltano run tap-github target-bigquery`).
-
+Breaking down the snippet:
+*   `name: target-jsonl`: The name you use in the terminal (e.g., `meltano run tap-github target-jsonl`).
+*   `variant: andyh1203`: The specific community maintainer of this plugin. (Meltano often has multiple variants for the same tool).
+*   `pip_url: target-jsonl`: The Python package name that Meltano uses to download and install the tool behind the scenes.
+So, whenever you run a `meltano add [something]` command, you are permanently updating the "menu" (the `meltano.yml` file) for your entire project!
 
