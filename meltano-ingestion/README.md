@@ -164,3 +164,28 @@ Breaking down the snippet:
 *   `pip_url: target-jsonl`: The Python package name that Meltano uses to download and install the tool behind the scenes.
 So, whenever you run a `meltano add [something]` command, you are permanently updating the "menu" (the `meltano.yml` file) for your entire project!
 
+
+<br>
+
+## 🚨Both commands are adding a Loader (a "target")
+
+**1. `meltano add target-jsonl` (The Local Test Loader)**
+*   **Where it goes:** It saves the data as a local file (releases.jsonl) right inside your project folder on your laptop.
+*   **Setup required:** None. You just add it and run it.
+*   **Why use it?** It is a dummy loader used for testing. It's the fastest way to verify that your extractor is working and pulling the right columns without needing to configure cloud credentials. It's for development/debugging.
+
+**2. `meltano add target-bigquery` (The Production Loader)**
+*   **Where it goes:** It sends the data directly into your Google Cloud BigQuery data warehouse.
+*   **Setup required:** Quite a bit. After you add it, you will need to configure it with your Google Cloud Project ID, a service account JSON key file (credentials), and the dataset name.
+*   **Why use it?** This is the actual goal of your pipeline. Once the data is in BigQuery, you can run SQL queries, build dashboards (like in Looker Studio), and join it with other tables. It's for production.
+
+**The Analogy**
+Think of your data pipeline as a delivery truck:
+*   `target-jsonl` is like doing a test drive around the block to make sure the engine works and the boxes are packed correctly.
+*   `target-bigquery` is like driving the truck to the actual warehouse to unload the goods for the rest of the company to use.
+
+<br>
+
+## ⚡Github Pandas Release Source
+`releases.jsonl` file data source: https://github.com/pandas-dev/pandas/releases
+<img width="1726" height="870" alt="image" src="https://github.com/user-attachments/assets/5c2e02e2-5f64-4790-9fcf-8e0efacba71e" />
