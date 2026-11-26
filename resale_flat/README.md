@@ -18,7 +18,7 @@ Try running the following commands:
 <br>
 
 ### 📌📌 Example Folder
-*   remove 2 default view: `my_first_dbt_model` and `my_second_dbt_model`
+*   remove 2 default views: `my_first_dbt_model` and `my_second_dbt_model`
 *   remove `my_first_dbt_model` and `my_second_dbt_model` default content in schema.yml file
 
 <br>
@@ -26,6 +26,9 @@ Try running the following commands:
 ### 🧭 Datasets and New Tables
 
 `floor_area_sqm` and `resale_price` are stored as `STRING` in `public_resale_flat_prices_from_jan_2017` created by Meltano
+<br>
+
+<img width="434" height="488" alt="image" src="https://github.com/user-attachments/assets/2fd58a88-4914-43f6-8536-cb39a6deef75" />
 
 <br>
 
