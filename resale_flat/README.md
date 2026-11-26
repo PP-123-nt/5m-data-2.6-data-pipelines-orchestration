@@ -32,6 +32,17 @@ Try running the following commands:
 
 <br>
 
+> **The two models we will build:**
+> - `prices.sql` — cleans the raw table: casts numeric columns from STRING to NUMERIC and adds a calculated `price_per_sqm` column
+> - `prices_by_town_type_model.sql` — aggregates the cleaned data by town, flat type and flat model to produce average prices per segment, useful for dashboards and analysis
+
+Create the following files inside the `resale_flat/models/` folder:
+
+> 1. Create a `source.yml` which points to the `resale` schema and `public_resale_flat_prices_from_jan_2017` table.
+> 2. Create a `prices.sql` model (materialized table) which selects all columns from the source table, cast the `floor_area_sqm` to numeric, then add a new column `price_per_sqm` which is the `resale_price` divided by `floor_area_sqm`.
+> 3. Create a `prices_by_town_type_model.sql` model (materialized table) which selects the `town`, `flat_type` and `flat_model` columns from `prices`, group by them and calculate the average of `floor_area_sqm`, `resale_price` and `price_per_sqm`. Finally, sort by `town`, `flat_type` and `flat_model`.
+
+
 <img width="793" height="439" alt="image" src="https://github.com/user-attachments/assets/4d345e41-f821-4ef2-b3c9-24a613485787" />
 
 <br>
